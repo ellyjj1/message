@@ -25,12 +25,13 @@ SECRET_KEY = 'django-insecure-3@@qja!#!+9rl5)ftijpfcb=&v*5=3(t0d*-$dywap9=06nz0e
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app', "localhost"]
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -40,6 +41,11 @@ INSTALLED_APPS = [
     'rest_framework',
     "chat"
 ]
+
+import sys
+print("Python Version:", sys.version)
+print("Installed Apps:", INSTALLED_APPS)
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -69,7 +75,8 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'message.wsgi.application'
+#WSGI_APPLICATION = 'message.wsgi.application'
+WSGI_APPLICATION = 'message.wsgi.app'
 
 
 # Database
@@ -107,8 +114,9 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
-
+# TIME_ZONE = 'UTC'
+# Pacific/Auckland
+TIME_ZONE = 'Pacific/Auckland'
 USE_I18N = True
 
 USE_TZ = True

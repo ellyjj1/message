@@ -19,7 +19,7 @@ def __str__(self): #object lable
     return self.name
 
 class Message(models.Model):    #creat a class called   Message
-    test = models.TextField()   
+    text = models.TextField()   
     chat_room = models.ForeignKey(ChatRoom, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
