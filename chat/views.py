@@ -20,11 +20,21 @@ def sumNumbersView(request):
         print("Request Headers:", request.headers)
         print("Request Data:", request.data)
 
-        # 以下为替代为get方法
+        # V1：以下为替代为get方法
         # start_num = request.data['start_num']
         # end_num = request.data['end_num']
+
+        # V2 修改为判断
         start_num = request.data.get('start_num')
         end_num = request.data.get('end_num')
+
+        # V3增加判断是否Json
+        if request.content_type == 'application/x-www-form-urlencoded':
+            start_num = request.POST.get('start_num')
+            end_num = request.POST.get('end_num')
+        else:
+            start_num = request.data.get('start_num')
+            end_num = request.data.get('end_num')
 
         # 已下到result上面为新增
         if start_num is None or end_num is None:
