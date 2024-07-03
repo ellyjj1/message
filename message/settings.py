@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     "chat",
-    "corsheaders",
+    'corsheaders',
 ]
 
 import sys
@@ -56,7 +56,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'message.urls'
@@ -156,6 +156,7 @@ CORS_ALLOWED_ORIGINS = [
 
     'http://localhost:3000',
     'http://localhost:3001',
+    'https://message-peach-chi.vercel.app/'
 
 ] # If this is used, then not need to use `CORS_ALLOW_ALL_ORIGINS = True`
 
@@ -163,5 +164,6 @@ CORS_ALLOWED_ORIGIN_REGEXES = [
 
     'http://localhost:3000',
     'http://localhost:3001',
+    'https://message-peach-chi.vercel.app/'
 
 ]
