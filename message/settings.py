@@ -11,10 +11,11 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import sys
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -27,11 +28,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app', "localhost"]
 
-
 # Application definition
 
 INSTALLED_APPS = [
-    
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,10 +43,9 @@ INSTALLED_APPS = [
     'corsheaders',
 ]
 
-import sys
+
 print("Python Version:", sys.version)
 print("Installed Apps:", INSTALLED_APPS)
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -77,9 +76,8 @@ TEMPLATES = [
     },
 ]
 
-#WSGI_APPLICATION = 'message.wsgi.application'
+# WSGI_APPLICATION = 'message.wsgi.application'
 WSGI_APPLICATION = 'message.wsgi.app'
-
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
@@ -96,14 +94,13 @@ DATABASES = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'verceldb', 
+        'NAME': 'verceldb',
         'USER': 'default',
-        'PASSWORD': 'jUq02FATgBHR', 
+        'PASSWORD': 'jUq02FATgBHR',
         'HOST': 'ep-weathered-grass-a47qehz5.us-east-1.aws.neon.tech',
         'PORT': '5432',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -123,7 +120,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
@@ -136,8 +132,6 @@ USE_I18N = True
 
 USE_TZ = True
 
-
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
@@ -148,7 +142,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CORS_ALLOW_ALL_ORIGINS = True # If this is used then `CORS_ALLOWED_ORIGINS` will not have any effect
+CORS_ALLOW_ALL_ORIGINS = True  # If this is used then `CORS_ALLOWED_ORIGINS` will not have any effect
 
 CORS_ALLOW_CREDENTIALS = True
 
@@ -156,14 +150,13 @@ CORS_ALLOWED_ORIGINS = [
 
     'http://localhost:3000',
     'http://localhost:3001',
-    'https://message-peach-chi.vercel.app/'
+    'https://message-peach-chi.vercel.app',
 
-] # If this is used, then not need to use `CORS_ALLOW_ALL_ORIGINS = True`
+]  # If this is used, then not need to use `CORS_ALLOW_ALL_ORIGINS = True`
 
 CORS_ALLOWED_ORIGIN_REGEXES = [
 
     'http://localhost:3000',
     'http://localhost:3001',
-    'https://message-peach-chi.vercel.app/'
 
 ]
