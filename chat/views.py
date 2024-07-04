@@ -39,7 +39,7 @@ def sumNumbersView(request):
         #     start_num = request.data.get('start_num')
         #     end_num = request.data.get('end_num')
 
-        # 根据 Content-Type 解析请求数据
+        # V4 根据 Content-Type 解析请求数据
         if request.content_type == 'application/x-www-form-urlencoded':
             # 处理 URL 编码的数据
             try:
@@ -67,4 +67,3 @@ def sumNumbersView(request):
 
         result = sumNumbers(start_num, end_num)
         return Response({'result': result})
-
