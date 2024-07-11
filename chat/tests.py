@@ -7,6 +7,10 @@ from django.urls import reverse
 
 from .views import sumNumbers
 
+from django.contrib.auth.models import User
+from rest_framework.authtoken.models import Token
+
+
 
 class ChatRoomViewSetTest(TestCase):
     @classmethod
@@ -16,7 +20,13 @@ class ChatRoomViewSetTest(TestCase):
         cls.chatroom2 = ChatRoom.objects.create(name='Test Room 2')
 
     def setUp(self):
+        # Create a user
+        self.user = User.objects.create_user(username='testuser', password='testpassword')
+        # create a token for the user
+        self.token = Token.objects.create(user=self.user)
         self.client = APIClient()
+        # Authenticate the client with the token
+        self.client.credentials(HTTP_AUTHORIZATION='Token ' + self.token.key)
 
     def test_list_chatrooms(self):
         response = self.client.get(reverse('chatroom-list'))
@@ -27,7 +37,7 @@ class ChatRoomViewSetTest(TestCase):
 
     def test_create_chatroom(self):
         data = {'name': 'New Test Room'}
-        response = self.client.post(reverse('chatroom-list'), data)
+        response = self.client.post(reverse('chatroom-list'), data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(ChatRoom.objects.count(), 3)
         self.assertEqual(ChatRoom.objects.get(id=response.data['id']).name, 'New Test Room')
@@ -77,7 +87,13 @@ class SumNumbersFunctionTest(TestCase):
 
 class SumNumbersViewTest(TestCase):
     def setUp(self):
+        # Create a user
+        self.user = User.objects.create_user(username='testuser', password='testpassword')
+        self.token = Token.objects.create(user=self.user)
+
         self.client = APIClient()
+        # Authenticate the client with the token
+        self.client.credentials(HTTP_AUTHORIZATION='Token ' + self.token.key)
         self.url = reverse('sum_numbers')
 
     def test_sum_numbers(self):
@@ -94,3 +110,16 @@ class SumNumbersViewTest(TestCase):
         response = self.client.post(self.url, {'start_num': -3, 'end_num': 3}, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['result'], 0)
+
+# class LoginTestCase(TestCase):
+# # 没成功
+#
+#     def setUp(self):
+#         self.user = User.objects.create_user(username='testuser', password='testpassword')
+#         self.client = APIClient()
+#
+#     def test_successful_login(self):
+#         print(self.login_url)
+#         response = self.client.post(self.login_url, {'username': 'testuser', 'password': 'testpassword'}, format='json')
+#         self.assertEqual(response.status_code, status.HTTP_200_OK)
+#         self.assertIn('token', response.data)
