@@ -180,7 +180,6 @@ CORS_ALLOW_HEADERS = [
 CORS_ALLOWED_ORIGINS = [
 
     'http://localhost:3000',
-    'http://localhost:3001',
     'https://message-peach-chi.vercel.app',
 
 ]  # If this is used, then not need to use `CORS_ALLOW_ALL_ORIGINS = True`
@@ -188,6 +187,5 @@ CORS_ALLOWED_ORIGINS = [
 CORS_ALLOWED_ORIGIN_REGEXES = [
 
     'http://localhost:3000',
-    'http://localhost:3001',
 
 ]

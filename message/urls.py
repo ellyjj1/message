@@ -24,4 +24,6 @@ urlpatterns = [
     path("chat/", include("chat.urls")),
     path("message/", include("chat.urls")),
     path("auth/", obtain_auth_token),
+    path('register/', include("chat.urls")),
+
 ]
