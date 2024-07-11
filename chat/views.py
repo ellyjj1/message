@@ -19,9 +19,9 @@ def sumNumbers(start_num, end_num):
 def sumNumbersView(request):
     if request.method == 'POST':
         # 增加调试记录：
-        print("!!!Request Headers!!!:", request.headers)
-        print("!!!Request Data!!!:", request.data)
-        print("!!!Request POST!!!:", request.POST)
+        # print("!!!Request Headers!!!:", request.headers)
+        # print("!!!Request Data!!!:", request.data)
+        # print("!!!Request POST!!!:", request.POST)
 
         # V1：以下为替代为get方法
         # start_num = request.data['start_num']
