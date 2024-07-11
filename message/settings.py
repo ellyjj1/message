@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'rest_framework',
     "chat",
     'corsheaders',
+    "rest_framework.authtoken",
+    "whitenoise",
 ]
 
 
