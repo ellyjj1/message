@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework.authtoken.views import obtain_auth_token
+from chat.views import register
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,6 +25,6 @@ urlpatterns = [
     path("chat/", include("chat.urls")),
     path("message/", include("chat.urls")),
     path("auth/", obtain_auth_token),
-    path('register/', include("chat.urls")),
+    path('register/', register),
 
 ]
