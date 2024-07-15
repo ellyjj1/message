@@ -12,7 +12,7 @@ from django.contrib.auth.models import User
 '''
 class ChatRoom(models.Model):  #creat a class called chatroom
     name = models.CharField(max_length=100)     # name of chatroom
-    created = models.DateTimeField(auto_now_add=True)   # date of the chatroom created
+    created_at = models.DateTimeField(auto_now_add=True)   # date of the chatroom created
     updated_at = models.DateTimeField(auto_now=True)    # date of the chatroom updated
 
 def __str__(self): #object lable
