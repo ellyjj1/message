@@ -14,6 +14,8 @@ class ChatRoom(models.Model):  #creat a class called chatroom
     name = models.CharField(max_length=100)     # name of chatroom
     created_at = models.DateTimeField(auto_now_add=True)   # date of the chatroom created
     updated_at = models.DateTimeField(auto_now=True)    # date of the chatroom updated
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE)
+    members = models.ManyToManyField(User, related_name='members', blank=True)
 
 def __str__(self): #object lable
     return self.name

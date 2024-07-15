@@ -5,7 +5,7 @@ class ChatRoomSerializer(serializers.ModelSerializer):
     # serializers define a format of input and output 
     class Meta:
         model = ChatRoom
-        fields = ["id", "name"]
+        fields = ["id", "name", "created_by", "members"]
 
 class MessageSerializer(serializers.ModelSerializer):
     class Meta:
