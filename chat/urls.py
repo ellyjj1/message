@@ -1,7 +1,7 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
-from chat.views import sumNumbersView
+from chat.views import sumNumbersView, get_user_id
 from chat.viewsets import ChatRoomViewSet, MessageViewSet, UserViewSet
 
 router = DefaultRouter()
